@@ -75,6 +75,8 @@ dependencies {
 
     implementation("me.zhanghai.android.materialprogressbar:library:1.6.1")
     implementation("com.github.bumptech.glide:glide:4.9.0")
+    implementation("com.github.bumptech.glide:okhttp3-integration:4.9.0")
+    kapt("com.github.bumptech.glide:compiler:4.9.0")
 
     // NETWORKING LIBRARIES
 
@@ -94,6 +96,9 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
     // TESTING LIBRARIES
+
+    implementation("com.facebook.stetho:stetho:1.5.1")
+    implementation("com.facebook.stetho:stetho-okhttp3:1.5.1")
 
     testImplementation("junit:junit:4.12")
     testImplementation("org.mockito:mockito-core:2.13.0")

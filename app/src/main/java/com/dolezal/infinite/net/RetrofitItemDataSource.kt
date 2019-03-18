@@ -3,6 +3,7 @@ package com.dolezal.infinite.net
 import androidx.paging.DataSource
 import androidx.paging.PositionalDataSource
 import com.dolezal.infinite.data.*
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -120,13 +121,13 @@ private class RetrofitItemDataSource(
         private const val RETRY_COUNT = 2L
 
         fun create(baseUrl: String, networkStateModel: NetworkStateModel): RetrofitItemDataSource {
-            val logging = HttpLoggingInterceptor().also {
             val loggingInterceptor = HttpLoggingInterceptor().also {
                 it.level = HttpLoggingInterceptor.Level.HEADERS
             }
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+                .addNetworkInterceptor(StethoInterceptor())
                 .build()
 
             val retrofit = Retrofit.Builder()
