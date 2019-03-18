@@ -6,8 +6,8 @@
     android:useLevel="false">
 
     <gradient
-        android:endColor="@color/colorPrimary"
+        android:endColor="@color/loading_end"
         android:gradientRadius="180"
-        android:startColor="#00FFFFFF"
+        android:startColor="@color/loading_start"
         android:type="sweep" />
 </shape>
