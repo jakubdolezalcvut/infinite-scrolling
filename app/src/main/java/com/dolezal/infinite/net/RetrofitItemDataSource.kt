@@ -16,9 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 import java.io.IOException
-import javax.inject.Singleton
 
-@Singleton
 class RetrofitItemDataSourceFactory(
     private val baseUrl: String,
     private val networkStateModel: NetworkStateModel
@@ -123,11 +121,12 @@ private class RetrofitItemDataSource(
 
         fun create(baseUrl: String, networkStateModel: NetworkStateModel): RetrofitItemDataSource {
             val logging = HttpLoggingInterceptor().also {
+            val loggingInterceptor = HttpLoggingInterceptor().also {
                 it.level = HttpLoggingInterceptor.Level.HEADERS
             }
 
             val client = OkHttpClient.Builder()
-                .addInterceptor(logging)
+                .addInterceptor(loggingInterceptor)
                 .build()
 
             val retrofit = Retrofit.Builder()
